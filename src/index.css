@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Outfit:wght@300..800&display=swap');
+@import "tailwindcss";
+
+/* ====================================================
+   DESIGN TOKENS — Premium Automotive Dark Theme
+   ==================================================== */
+@theme {
+  /* Surfaces — warm charcoal, never pure black */
+  --color-base-950: #0a0a0c;
+  --color-base-900: #121215;
+  --color-base-850: #181a1f;
+  --color-base-800: #1f2128;
+  --color-base-700: #2a2d36;
+  --color-base-600: #3a3e4a;
+
+  /* Champagne gold — signature accent, not yellow-gold */
+  --color-gold-300: #f3e2b8;
+  --color-gold-400: #e8c97a;
+  --color-gold-500: #d4af6a;
+  --color-gold-600: #b8924f;
+  --color-gold-700: #93713a;
+
+  /* Neutral text */
+  --color-ivory: #f5f3ef;
+  --color-mist: #9a9ba3;
+  --color-smoke: #6b6c75;
+
+  /* Status */
+  --color-success: #5fb88a;
+  --color-danger: #d96a5f;
+
+  /* Fonts */
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+
+  /* Shadows */
+  --shadow-gold-glow: 0 0 40px -8px rgba(212, 175, 106, 0.35);
+  --shadow-card: 0 20px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ====================================================
+   LIGHT MODE OVERRIDES
+   Applied when data-theme="light" is on <html>
+   ==================================================== */
+[data-theme="light"] {
+  --color-base-950: #f8f6f1;
+  --color-base-900: #ede9e0;
+  --color-base-850: #e4dfd4;
+  --color-base-800: #d8d2c6;
+  --color-base-700: #c5bfb2;
+  --color-base-600: #b0aa9d;
+
+  --color-ivory: #1a1814;
+  --color-mist: #4a4840;
+  --color-smoke: #7a7870;
+}
+
+[data-theme="light"] body {
+  background-color: var(--color-base-950);
+  color: var(--color-ivory);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-base-950);
+  color: var(--color-ivory);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode explicit overrides for components using hardcoded Tailwind bg classes */
+[data-theme="light"] .glass-panel {
+  background: rgba(237, 233, 224, 0.7);
+  border-color: rgba(180, 150, 80, 0.2);
+}
+
+[data-theme="light"] header {
+  --tw-bg-opacity: 1;
+}
+
+[data-theme="light"] .bg-base-950 {
+  background-color: var(--color-base-950) !important;
+}
+
+[data-theme="light"] .bg-base-900 {
+  background-color: var(--color-base-900) !important;
+}
+
+[data-theme="light"] .bg-base-850 {
+  background-color: var(--color-base-850) !important;
+}
+
+[data-theme="light"] .bg-base-800 {
+  background-color: var(--color-base-800) !important;
+}
+
+[data-theme="light"] .text-ivory {
+  color: var(--color-ivory) !important;
+}
+
+[data-theme="light"] .text-mist {
+  color: var(--color-mist) !important;
+}
+
+[data-theme="light"] .text-smoke {
+  color: var(--color-smoke) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Scrollbar — matches the brand, not the browser default */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-700);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-600);
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-gold-500);
+  color: var(--color-base-950);
+}
+
+/* Focus visibility — accessibility, never remove outline without replacing it */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Utility: gradient text for premium headings */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--color-gold-300) 0%, var(--color-gold-500) 50%, var(--color-gold-600) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Utility: glass panel */
+.glass-panel {
+  background: rgba(24, 26, 31, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 106, 0.12);
+}
