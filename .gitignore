@@ -15,8 +15,6 @@ dist
 dist-ssr
 
 # Environment files
-.env
-.env.*
 !.env.example
 
 # Local files
@@ -32,3 +30,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+config.bat
